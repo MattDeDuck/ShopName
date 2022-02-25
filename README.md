@@ -1,5 +1,5 @@
-# Shelves
-Shelves is a mod made with BepInEx for use with the Potion Craft game. It adds shelves to the bedroom, 
+# Shop Name
+Shop Name is a mod made with BepInEx for use with the Potion Craft game. It allows you to name your shop.
 
 ### BepInEx
 - Download the latest BepInEx release from [here](https://github.com/BepInEx/BepInEx/releases)
