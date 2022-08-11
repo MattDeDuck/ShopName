@@ -2,8 +2,9 @@
 using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
-using System.IO;
+using PotionCraft.ManagersSystem.Room;
 using System;
+using System.IO;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
@@ -11,18 +12,15 @@ using UnityEngine.Rendering;
 
 namespace ShopName
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, "1.0.0.0")]
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, "1.1.0.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource Log { get; set; }
-        public static string pluginLoc = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        public static string pluginLoc = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        public static Texture2D shopNameSmallTexture;
-        public static Texture2D shopNameMediumTexture;
         public static Texture2D shopNameBigTexture;
-        public static Sprite shopNameSmallSprite;
-        public static Sprite shopNameMediumSprite;
         public static Sprite shopNameBigSprite;
+
         public static string t_shopNameText;
         public static TextMeshPro shopNameText;
 
@@ -30,10 +28,7 @@ namespace ShopName
         {
             Log = this.Logger;
 
-            shopNameSmallTexture = LoadTextureFromFile(pluginLoc + "/shopbgSMALL.png");
-            shopNameSmallSprite = Sprite.Create(shopNameSmallTexture, new Rect(0, 0, shopNameSmallTexture.width, shopNameSmallTexture.height), new Vector2(0.5f, 0.5f));
-            shopNameMediumTexture = LoadTextureFromFile(pluginLoc + "/shopbgMEDIUM.png");
-            shopNameMediumSprite = Sprite.Create(shopNameMediumTexture, new Rect(0, 0, shopNameMediumTexture.width, shopNameMediumTexture.height), new Vector2(0.5f, 0.5f));
+            // Create the texture and sprite
             shopNameBigTexture = LoadTextureFromFile(pluginLoc + "/shopbgBIG.png");
             shopNameBigSprite = Sprite.Create(shopNameBigTexture, new Rect(0, 0, shopNameBigTexture.width, shopNameBigTexture.height), new Vector2(0.5f, 0.5f));
 
@@ -50,23 +45,13 @@ namespace ShopName
             if(t_shopNameText.Length > 25)
             {
                 Log.LogError("Shop name too long! (over 25 characters)");
+                CreateShopNameObject(shopNameBigSprite);
+                AddShopNameText(true);
             }
             else
             {
-                // Depending on name length...change the sprite of the bg object
-                if (t_shopNameText.Length < 10)
-                {
-                    CreateShopNameObject(shopNameSmallSprite);
-                }
-                else if (t_shopNameText.Length > 9 && t_shopNameText.Length < 16)
-                {
-                    CreateShopNameObject(shopNameMediumSprite);
-                }
-                else if (t_shopNameText.Length > 15 && t_shopNameText.Length < 26)
-                {
-                    CreateShopNameObject(shopNameBigSprite);
-                }
-                AddShopNameText();
+                CreateShopNameObject(shopNameBigSprite);
+                AddShopNameText(false);
             }
         }
 
@@ -91,19 +76,8 @@ namespace ShopName
             // Give it a layer
             shopNameObject.layer = LayerMask.NameToLayer("UI");
 
-            // Depending on name length...change the position of the bg object
-            if (t_shopNameText.Length < 10)
-            {
-                shopNameObject.transform.localPosition = new Vector3(-2.5f, -6.3f, 0f);
-            }
-            else if (t_shopNameText.Length > 9 && t_shopNameText.Length < 16)
-            {
-                shopNameObject.transform.localPosition = new Vector3(-2.5f, -6.3f, 0f);
-            }
-            else if (t_shopNameText.Length > 15 && t_shopNameText.Length < 26)
-            {
-                shopNameObject.transform.localPosition = new Vector3(-3f, -6.3f, 0f);
-            }
+            // Change the position
+            shopNameObject.transform.localPosition = new Vector3(-3f, -6.3f, 0f);
 
             // Make it active
             shopNameObject.SetActive(true);
@@ -111,7 +85,7 @@ namespace ShopName
             Log.LogInfo("Shop Name object created");
         }
 
-        public static void AddShopNameText()
+        public static void AddShopNameText(bool nameTooLong)
         {
             // Create a new GameObject for the text
             GameObject textHolder = new GameObject();
@@ -144,7 +118,13 @@ namespace ShopName
             shopNameText.color = new Color32(57, 30, 20, 255);
 
             // Set the text objects text to the name grabbed from the json file
-            shopNameText.text = t_shopNameText;
+            if(nameTooLong)
+            {
+                shopNameText.text = "Needs to be < 26 chars";
+            }else
+            {
+                shopNameText.text = t_shopNameText;
+            }
 
             // Set it to active
             textHolder.SetActive(true);

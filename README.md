@@ -19,9 +19,5 @@ Note: You need the `BepInEx_64` version for use with Potion Craft
 
 Note: *Currently names cannot be longer than 25 characters - this is being looked at*
 
-### Images
-![Small](https://github.com/MattDeDuck/ShopName/blob/master/screen1.png)
-
-![Medium](https://github.com/MattDeDuck/ShopName/blob/master/screen2.png)
-
-![Large](https://github.com/MattDeDuck/ShopName/blob/master/screen3.png)
+### Example Image
+![Shop Name](https://github.com/MattDeDuck/ShopName/blob/master/screen3.png)
