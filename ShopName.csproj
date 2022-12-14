@@ -40,8 +40,8 @@
       <HintPath>libs\PotionCraft.ManagerSystem.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="QFSW.QC">
-      <HintPath>libs\QFSW.QC.dll</HintPath>
+    <Reference Include="PotionCraft.SceneLoader">
+      <HintPath>libs\PotionCraft.SceneLoader.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.Scripts">

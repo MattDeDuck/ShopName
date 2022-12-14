@@ -1,6 +1,8 @@
 # Shop Name
 Shop Name is a mod made with BepInEx for use with the Potion Craft game. It allows you to name your shop.
 
+This is only compatible with v1.0.2.1 of the Potion Craft Game
+
 ### BepInEx
 - Download the latest BepInEx release from [here](https://github.com/BepInEx/BepInEx/releases)
 Note: You need the `BepInEx_64` version for use with Potion Craft
@@ -17,7 +19,7 @@ Note: You need the `BepInEx_64` version for use with Potion Craft
 - Open up `shopname.json` in any text editor or IDE of your choice
 - Change the value of `Shop Name` to whatever you want to call your shop
 
-Note: *Currently names cannot be longer than 25 characters - this is being looked at*
+Note: *Currently names cannot be longer than 25 characters*
 
 ### Example Image
 ![Shop Name](https://github.com/MattDeDuck/ShopName/blob/master/screen3.png)
