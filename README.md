@@ -1,7 +1,7 @@
 # Shop Name
 Shop Name is a mod made with BepInEx for use with the Potion Craft game. It allows you to name your shop.
 
-This is only compatible with v1.0.2.1 of the Potion Craft Game
+This is only compatible with v1.0.3.0 of the Potion Craft Game
 
 ### BepInEx
 - Download the latest BepInEx release from [here](https://github.com/BepInEx/BepInEx/releases)

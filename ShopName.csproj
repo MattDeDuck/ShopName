@@ -45,7 +45,7 @@
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.Scripts">
-      <HintPath>libs\stripped.dll</HintPath>
+      <HintPath>libs\Scriptsstripped.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
