@@ -12,7 +12,7 @@ using UnityEngine.Rendering;
 
 namespace ShopName
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, "1.0.3.0")]
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, "1.0.4.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource Log { get; set; }
@@ -42,17 +42,8 @@ namespace ShopName
         [HarmonyPostfix, HarmonyPatch(typeof(RoomManager), "OrderedStart")]
         public static void OrderedStart_Postfix()
         {
-            if(t_shopNameText.Length > 25)
-            {
-                Log.LogError("Shop name too long! (over 25 characters)");
-                CreateShopNameObject(shopNameBigSprite);
-                AddShopNameText(true);
-            }
-            else
-            {
-                CreateShopNameObject(shopNameBigSprite);
-                AddShopNameText(false);
-            }
+            CreateShopNameObject(shopNameBigSprite);
+            AddShopNameText();
         }
 
         public static void CreateShopNameObject(Sprite spriteSize)
@@ -85,7 +76,7 @@ namespace ShopName
             Log.LogInfo("Shop Name object created");
         }
 
-        public static void AddShopNameText(bool nameTooLong)
+        public static void AddShopNameText()
         {
             // Create a new GameObject for the text
             GameObject textHolder = new GameObject();
@@ -117,14 +108,10 @@ namespace ShopName
             shopNameText.fontSizeMax = 8;
             shopNameText.color = new Color32(57, 30, 20, 255);
 
-            // Set the text objects text to the name grabbed from the json file
-            if(nameTooLong)
-            {
-                shopNameText.text = "Needs to be < 26 chars";
-            }else
-            {
-                shopNameText.text = t_shopNameText;
-            }
+            // Set size of rect text will fit to
+            shopNameText.rectTransform.sizeDelta = new Vector2(11f, 1f);
+
+            shopNameText.text = t_shopNameText;
 
             // Set it to active
             textHolder.SetActive(true);
