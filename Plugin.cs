@@ -2,6 +2,8 @@
 using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
+using PotionCraft.SceneLoader;
+using PotionCraft.ManagersSystem.Game;
 using PotionCraft.ManagersSystem.Room;
 using System;
 using System.IO;
@@ -10,11 +12,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+
 namespace ShopName
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, "1.0.4.0")]
+    [BepInPlugin(PLUGIN_GUID, "PotionCraftShopName", "1.1.0.0")]
+    [BepInProcess("Potion Craft.exe")]
     public class Plugin : BaseUnityPlugin
     {
+        public const string PLUGIN_GUID = "com.mattdeduck.potioncraftshopname";
         public static ManualLogSource Log { get; set; }
         public static string pluginLoc = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -39,8 +44,13 @@ namespace ShopName
             Harmony.CreateAndPatchAll(typeof(Plugin));
         }
 
-        [HarmonyPostfix, HarmonyPatch(typeof(RoomManager), "OrderedStart")]
-        public static void OrderedStart_Postfix()
+        [HarmonyPostfix, HarmonyPatch(typeof(GameManager), "Start")]
+        public static void Start_Postfix()
+        {
+            ObjectsLoader.AddLast("SaveLoadManager.SaveNewGameState", () => CreateShopPlate());
+        }
+
+        public static void CreateShopPlate()
         {
             CreateShopNameObject(shopNameBigSprite);
             AddShopNameText();
@@ -55,7 +65,7 @@ namespace ShopName
             var parentGO = GameObject.Find("Room Meeting").transform;
             shopNameObject.transform.parent = parentGO;
 
-            // Give it the "Off" sprite by default
+            // Give it a sprite
             var sr = shopNameObject.AddComponent<SpriteRenderer>();
             sr.sprite = spriteSize;
 

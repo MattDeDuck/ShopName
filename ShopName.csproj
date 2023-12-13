@@ -48,6 +48,18 @@
       <HintPath>libs\Scriptsstripped.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="PotionCraft.Scripts">
+      <HintPath>libs\Scriptsstripped.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Scripts">
+      <HintPath>libs\Scriptsstripped.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Scripts">
+      <HintPath>libs\Scriptsstripped.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Scripts">
+      <HintPath>libs\Scriptsstripped.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>libs\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
@@ -56,5 +68,9 @@
       <HintPath>libs\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="libs\" />
   </ItemGroup>
 </Project>
