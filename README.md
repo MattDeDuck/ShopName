@@ -25,4 +25,4 @@ Note: You need the `BepInEx_64` version for use with Potion Craft
 ```
 
 ### Example Image
-![Shop Name](https://github.com/MattDeDuck/ShopName/blob/master/screen3.png)
+![Shop Name](https://github.com/MattDeDuck/ShopName/blob/master/images/screen1.png?raw=true)
