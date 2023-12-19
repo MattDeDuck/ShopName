@@ -1,0 +1,9 @@
+{
+  "name": "ShopName",
+  "version_number": "1.1.1",
+  "website_url": "https://github.com/MattDeDuck/ShopName",
+  "description": "Shop Name is a mod made with BepInEx for use with the Potion Craft game. It allows you to name your shop!",
+  "dependencies": [
+    "BepInEx-BepInExPack_PotionCraft-5.4.18"
+  ]
+}

@@ -15,7 +15,7 @@ using UnityEngine.Rendering;
 
 namespace ShopName
 {
-    [BepInPlugin(PLUGIN_GUID, "PotionCraftShopName", "1.1.0.0")]
+    [BepInPlugin(PLUGIN_GUID, "PotionCraftShopName", "1.1.1.0")]
     [BepInProcess("Potion Craft.exe")]
     public class Plugin : BaseUnityPlugin
     {
@@ -89,7 +89,7 @@ namespace ShopName
         public static void AddShopNameText()
         {
             // Create a new GameObject for the text
-            GameObject textHolder = new GameObject();
+            GameObject textHolder = new();
 
             // Give it the shop name background as a parent
             GameObject parent = GameObject.Find("Shop Name");
