@@ -15,7 +15,7 @@ using UnityEngine.Rendering;
 
 namespace ShopName
 {
-    [BepInPlugin(PLUGIN_GUID, "PotionCraftShopName", "1.1.1.0")]
+    [BepInPlugin(PLUGIN_GUID, "PotionCraftShopName", "1.1.2.0")]
     [BepInProcess("Potion Craft.exe")]
     public class Plugin : BaseUnityPlugin
     {

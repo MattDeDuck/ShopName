@@ -35,4 +35,4 @@ Shop Name is a mod made with BepInEx for use with the Potion Craft game. It allo
 
 ### Image
 
-![Shop name](https://github.com/MattDeDuck/ShopName/blob/master/images/screen1.pngraw=true)
+![Shop name](https://github.com/MattDeDuck/ShopName/blob/master/images/screen1.png?raw=true)
