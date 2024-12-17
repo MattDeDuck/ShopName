@@ -16,6 +16,12 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Compile Remove="libs\**" />
+	  <EmbeddedResource Remove="libs\**" />
+	  <None Remove="libs\**" />
+	</ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
@@ -29,37 +35,33 @@
   
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>libs\Newtonsoft.Json.dll</HintPath>
+      <HintPath>librs\Newtonsoft.Json.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.Core">
-      <HintPath>libs\PotionCraft.Core.dll</HintPath>
+      <HintPath>librs\PotionCraft.Core.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.ManagerSystem">
-      <HintPath>libs\PotionCraft.ManagerSystem.dll</HintPath>
+      <HintPath>librs\PotionCraft.ManagerSystem.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.SceneLoader">
-      <HintPath>libs\PotionCraft.SceneLoader.dll</HintPath>
+      <HintPath>librs\PotionCraft.SceneLoader.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PotionCraft.Scripts">
-      <HintPath>libs\PotionCraft.Scripts-publicized.dll</HintPath>
+      <HintPath>librs\PotionCraft.Scripts-publicized.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>libs\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>librs\Unity.TextMeshPro.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>libs\UnityEngine.UI.dll</HintPath>
+      <HintPath>librs\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="libs\" />
   </ItemGroup>
   
   <ItemGroup>
